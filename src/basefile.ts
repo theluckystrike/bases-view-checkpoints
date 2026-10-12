@@ -139,9 +139,12 @@ export function restoreCheckpoint(text: string, checkpoint: Checkpoint): Restore
 	}
 	// A replaced node can remove a YAML anchor that another node still uses. Refuse when the new text
 	// does not parse, or when another view or an unknown top-level key would get a different value.
+	// No line folding and no flow padding, so long filters and [a, b] lists in other views keep their text.
+	// The writer emits LF; a CRLF file gets CRLF back.
 	let next: string;
 	try {
-		next = String(doc);
+		next = doc.toString({ lineWidth: 0, flowCollectionPadding: false });
+		if (text.includes('\r\n')) next = next.replace(/\r?\n/g, '\r\n');
 	} catch {
 		return { ok: false, reason: ALIAS_REASON };
 	}

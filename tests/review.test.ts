@@ -27,6 +27,17 @@ describe('review defects', () => {
 		expect(() => restoreCheckpoint(text, cp)).not.toThrow();
 		expect(restoreCheckpoint(text, cp).ok).toBe(false);
 	});
+	it('keeps the text of the other views when it restores one view', () => {
+		const long = 'file.hasTag("project") && note.status != "done" && note.priority > 2 && file.mtime > now() - "7 days"';
+		const text = `views:\n  - name: A\n    type: table\n  - name: B\n    type: table\n    order: [file.name, note.status]\n    filters:\n      and:\n        - '${long}'\n`;
+		const result = restoreCheckpoint(text, saved(text, 'A'));
+		expect(result.ok && result.text).toBe(text);
+	});
+	it('keeps the CRLF line ends of the file', () => {
+		const text = 'views:\r\n  - name: A\r\n    type: table\r\n  - name: B\r\n    type: table\r\n';
+		const result = restoreCheckpoint(text, saved(text, 'A'));
+		expect(result.ok && result.text).toBe(text);
+	});
 	it('refuses to save a value that the JSON plugin data cannot hold', () => {
 		const result = saveCheckpoint('views:\n  - name: A\n    type: table\n    limit: .inf\n', 'x.base', 'A');
 		expect(result.ok).toBe(false);

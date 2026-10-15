@@ -1,5 +1,11 @@
 # bases-view-checkpoints
 
+## 1.0.4
+
+### Patch Changes
+
+- f0bc1d3: Correct the install instructions for the published community directory listing.
+
 ## 1.0.3
 
 ### Patch Changes

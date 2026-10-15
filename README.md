@@ -59,12 +59,15 @@ between the checkpoint and the file now, without writing anything.
 
 ## Install
 
-The plugin is not in the Obsidian community plugin list yet. Install it from a
-release: copy `main.js`, `manifest.json` and `styles.css` into
+In Settings, open Community plugins, select Browse, and search for Bases View
+Checkpoints. Install the plugin and enable it. It is listed in the
+[community directory](https://community.obsidian.md/plugins/bases-view-checkpoints).
+
+For a manual install, copy `main.js`, `manifest.json` and `styles.css` from a
+[release](https://github.com/theluckystrike/bases-view-checkpoints/releases) into
 `<vault>/.obsidian/plugins/bases-view-checkpoints/`, then turn the plugin on in
 Settings, Community plugins. The plugin needs Obsidian 1.13.4 or later. It uses browser APIs and the public
-Obsidian API. Mobile device tests have not been run. This build is prepared for
-release; a public release may not yet be available.
+Obsidian API. Mobile device tests have not been run.
 
 ## Usage
 

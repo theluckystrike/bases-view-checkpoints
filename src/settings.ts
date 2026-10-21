@@ -2,6 +2,7 @@ import { PluginSettingTab, type SettingDefinitionItem } from 'obsidian';
 import { sponsorsSettingItems } from './license/github-obsidian';
 import { PRO_UI } from './pro';
 import type BasesViewCheckpointsPlugin from './main';
+import { helloSettingItems } from './hello/settings';
 
 export interface CheckpointsSettings {
 	/** True = no data yet; false = at least one checkpoint was saved. */
@@ -25,6 +26,11 @@ export class BasesViewCheckpointsSettingTab extends PluginSettingTab {
 	}
 
 	getSettingDefinitions(): SettingDefinitionItem[] {
+		// The product rows, then the "More from NoteMods" card (packages/hello).
+		return [...this.productSettingDefinitions(), ...helloSettingItems()];
+	}
+
+	productSettingDefinitions(): SettingDefinitionItem[] {
 		return [
 			...(this.plugin.pro ? sponsorsSettingItems(this.plugin.pro, PRO_UI) : []),
 			{

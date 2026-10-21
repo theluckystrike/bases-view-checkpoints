@@ -4,6 +4,8 @@ import type { SponsorsManager } from './license/index';
 import { createGitHubSponsors } from './license/github-obsidian';
 import { bindPro, isPro, PRO_UI, SPONSORS } from './pro';
 import { BasesViewCheckpointsSettingTab, normalizeSettings, type CheckpointsSettings } from './settings';
+import { setupHello } from './hello/index';
+import WHATS_NEW from './whats-new.json';
 
 interface CheckpointData {
 	free: Record<string, Checkpoint>;
@@ -23,6 +25,8 @@ export default class BasesViewCheckpointsPlugin extends Plugin {
 	pro: SponsorsManager | null = null;
 
 	async onload(): Promise<void> {
+		// First: "What's new" reads its state before the settings load (packages/hello). It does not wait.
+		setupHello(this, WHATS_NEW);
 		await this.loadSettings();
 		const pro = createGitHubSponsors(this.app, this.manifest.id, SPONSORS, this);
 		pro.init();

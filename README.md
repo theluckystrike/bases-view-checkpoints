@@ -93,6 +93,8 @@ undo brings back that text when nothing else touched the file after the restore.
 
 ## Settings
 
+After a minor or major update, this plugin opens one What's new tab in the background. The tab and settings card suggest other NoteMods plugins and Zovo Chat and link to notemods.com for feedback ([privacy](https://notemods.com/privacy/)). The tab sends no data. Turn the tab off in Settings.
+
 The plugin has no user controls for the free checkpoint loop. The Pro section of the settings tab shows
 the GitHub sign in and the Pro status after you sign in.
 

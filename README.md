@@ -39,12 +39,12 @@ since the restore. When the file changed, the undo refuses with a notice.
 
 ### Several named checkpoints (Pro)
 
-With Pro, run Save named checkpoint, select the file and view, and enter a name
-such as Weekly review. A new name adds a checkpoint. Saving the same name for
-that file and view replaces its saved setup. The restore picker shows the
+With Pro, run Save named checkpoint, select the file and view, and enter a name.
+A new name adds a checkpoint. Saving the same name for that file and view replaces its saved setup. The restore picker shows the
 checkpoint name, view name and file path. Saved named checkpoints stay in plugin
 data after sign out, but their restore needs Pro. The free checkpoint stays
-available.
+available. Without Pro, both Pro commands show a Sponsor on GitHub notice and
+save nothing.
 
 <img src="https://raw.githubusercontent.com/theluckystrike/bases-view-checkpoints/HEAD/docs/pro-named.png" alt="The name prompt of Save named checkpoint" width="720">
 

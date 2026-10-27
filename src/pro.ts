@@ -1,6 +1,7 @@
 // Pro through GitHub Sponsors (packages/license, github.ts). product.yaml pro: holds the same values; fx check compares them.
 // This file is the one Pro facade: every Pro check in the plugin calls isPro().
 import type { SponsorsConfig, SponsorsManager } from './license/index';
+import { showProNotice } from './license/github-obsidian';
 
 export const SPONSORS: SponsorsConfig = {
 	// Public client id of the seller's OAuth App (device flow on, no client secret anywhere).
@@ -19,6 +20,10 @@ export const PRO_UI = {
 	priceText: 'Sponsor $5 a month, or $15 once. When you have paid $15 in total, Pro stays on.',
 };
 
+/** Leads of the Pro gate notices of the two Pro commands. showProNotice adds the next step for this user. */
+export const PRO_NAMED = 'Named checkpoints need Pro.';
+export const PRO_COMPARE = 'Compare checkpoint with current view needs Pro.';
+
 let manager: SponsorsManager | null = null;
 
 /** Connects the facade to the plugin's GitHub Sponsors state (main.ts onload). */
@@ -29,4 +34,9 @@ export function bindPro(m: SponsorsManager | null): void {
 /** Pro from the cached GitHub Sponsors answer. Never sends a request. */
 export function isPro(): boolean {
 	return manager?.isPro() ?? false;
+}
+
+/** Shows the shared Pro notice: the lead, then the next step for this user. A free user gets a Sponsor on GitHub button. */
+export function proNotice(lead: string): void {
+	showProNotice(manager, lead);
 }

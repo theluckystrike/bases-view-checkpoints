@@ -123,7 +123,7 @@ describe(`${pluginId} checkpoints`, function () {
 		expect((await action('state')).message).toBe('Weekly, Monthly');
 		await action('write', EDIT); await action('compare'); await browser.$('.checkpoint-changes').waitForDisplayed();
 		expect(await browser.$('.checkpoint-changes').getText()).toContain('formulas');
-		await browser.keys('Escape'); await action('off'); await action('named-restore'); await noticeContains('Pro feature');
+		await browser.keys('Escape'); await action('off'); await action('named-restore'); await noticeContains('This is a pro feature.');
 		expect((await action('state')).text).toBe(EDIT);
 	});
 });

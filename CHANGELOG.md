@@ -1,5 +1,11 @@
 # bases-view-checkpoints
 
+## 1.1.1
+
+### Patch Changes
+
+- 7ecf369: Save named checkpoint and Compare checkpoint with current view now show in the command palette without Pro. They show how to get Pro, with a Sponsor on GitHub button.
+
 ## 1.1.0
 
 ### Minor Changes

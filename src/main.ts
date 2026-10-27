@@ -2,7 +2,7 @@ import { FuzzySuggestModal, Modal, Notice, Plugin, Setting, TFile, type App } fr
 import { compareCheckpoint, restoreCheckpoint, saveCheckpoint, viewNames, type Checkpoint } from './basefile';
 import type { SponsorsManager } from './license/index';
 import { createGitHubSponsors } from './license/github-obsidian';
-import { bindPro, isPro, PRO_UI, SPONSORS } from './pro';
+import { bindPro, isPro, PRO_COMPARE, PRO_NAMED, proNotice, SPONSORS } from './pro';
 import { BasesViewCheckpointsSettingTab, normalizeSettings, type CheckpointsSettings } from './settings';
 import { setupHello } from './hello/index';
 import WHATS_NEW from './whats-new.json';
@@ -38,14 +38,17 @@ export default class BasesViewCheckpointsPlugin extends Plugin {
 		this.addCommand({ id: 'save-checkpoint', name: 'Save view checkpoint', callback: () => this.pickSave(false) });
 		this.addCommand({ id: 'restore-checkpoint', name: 'Restore view checkpoint', callback: () => this.pickCheckpoint((cp) => this.run(() => this.restore(cp))) });
 		this.addCommand({ id: 'undo-checkpoint-restore', name: 'Undo last checkpoint restore', callback: () => this.run(() => this.undo()) });
+		// The Pro commands show for all users. For a free user, the command shows the Pro notice and does nothing else.
 		this.addCommand({ id: 'save-named', name: 'Save named checkpoint', checkCallback: (checking) => {
-			if (!isPro()) return false;
-			if (!checking) this.pickSave(true);
+			if (checking) return true;
+			if (!isPro()) { proNotice(PRO_NAMED); return true; }
+			this.pickSave(true);
 			return true;
 		} });
 		this.addCommand({ id: 'compare-checkpoint', name: 'Compare checkpoint with current view', checkCallback: (checking) => {
-			if (!isPro()) return false;
-			if (!checking) this.pickCheckpoint((cp) => this.run(() => this.compare(cp)));
+			if (checking) return true;
+			if (!isPro()) { proNotice(PRO_COMPARE); return true; }
+			this.pickCheckpoint((cp) => this.run(() => this.compare(cp)));
 			return true;
 		} });
 		this.registerEvent(this.app.vault.on('rename', (file, oldPath) => {
@@ -81,7 +84,7 @@ export default class BasesViewCheckpointsPlugin extends Plugin {
 
 	needPro(): boolean {
 		if (isPro()) return true;
-		new Notice(`Pro feature. ${PRO_UI.priceText} See the plugin settings.`);
+		proNotice('This is a pro feature.');
 		return false;
 	}
 

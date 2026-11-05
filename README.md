@@ -60,8 +60,7 @@ between the checkpoint and the file now, without writing anything.
 ## Install
 
 In Settings, open Community plugins, select Browse, and search for Bases View
-Checkpoints. Install the plugin and enable it. It is listed in the
-[community directory](https://community.obsidian.md/plugins/bases-view-checkpoints).
+Checkpoints. Install the plugin and enable it.
 
 For a manual install, copy `main.js`, `manifest.json` and `styles.css` from a
 [release](https://github.com/theluckystrike/bases-view-checkpoints/releases) into
@@ -74,7 +73,7 @@ Obsidian API. Mobile device tests have not been run.
 1. Open the base whose view you want to keep.
 2. Run Save view checkpoint from the command palette. Pick the file and the
    view.
-3. Change the view as you like.
+3. Change the view.
 4. Run Restore view checkpoint. Check the preview and confirm.
 5. When the result is not what you want, run Undo last checkpoint restore.
 
@@ -152,6 +151,8 @@ set a size limit, so the plugin makes no claim about a size limit.
 ## Payment, account and network
 
 The core features are free. Pro features need a GitHub Sponsors sponsorship of theluckystrike: $5 a month or more, or $15 once. A total payment of $15 meets the payment requirement for Pro without further payment. Sign-in and the checks below still apply. Your notes stay readable and editable with or without Pro.
+
+[One payment turns on Pro in every NoteMods plugin](https://notemods.com/pro/).
 
 GitHub handles the payment. Sponsor at https://github.com/sponsors/theluckystrike?frequency=one-time&metadata_source=bases-view-checkpoints. You need no account for the free features. Pro needs the GitHub account that sponsors.
 

@@ -7,7 +7,7 @@ import manifest from '../manifest.json';
 
 // A free user can run the two Pro commands. The command shows the shared Pro notice with a Sponsor button
 // and does nothing else: no picker opens and nothing is saved. A Pro user gets the picker, as before.
-const PITCH = 'Sponsor on GitHub, then sign in from the plugin settings.';
+const PITCH = 'One payment turns on Pro in every NoteMods plugin. Sponsor on GitHub, then sign in from the plugin settings.';
 const START = 'views:\n  - name: Alpha\n    type: table\n';
 
 function fakePro(pro: boolean): SponsorsManager {

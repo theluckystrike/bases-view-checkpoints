@@ -1,9 +1,9 @@
 {
 	"id": "bases-view-checkpoints",
 	"name": "Bases View Checkpoints",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"changes": [
-		"Save named checkpoint and Compare checkpoint with current view now show in the command palette without Pro. They show how to get Pro, with a Sponsor on GitHub button."
+		"The Pro notice of Bases View Checkpoints now says that one payment turns on Pro in every NoteMods plugin."
 	],
 	"tip": "Run \"Undo last checkpoint restore\" to put the file text back after a restore, if the file has not changed since.",
 	"thanks": "Hi, I am Michael, a solo developer in Poland. Bases View Checkpoints is one of over 100 small plugins that I make. Thank you for using it with Bases. Bases is still new, and your setups teach me a lot.",
